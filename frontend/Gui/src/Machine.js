@@ -1,37 +1,45 @@
-import {createMachine, guard, interpret, invoke, reduce, state, transition} from "robot3";
+import {createMachine, guard, invoke, reduce, state, transition} from "robot3";
 
 const wait = (duration) => {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
         window.setTimeout(() => {
             resolve()
+            // reject(new Error("impossible de synchroniser"))
         }, duration)
     })
 };
 
-const machine = createMachine('edit', {
+export default createMachine({
     idle: state(
         transition("edit", "edit")
     ),
     edit: state(
         transition("cancel", "idle"),
-        transition("submit",
-            "loading",
+        transition("submit", "loading",
             guard((ctx) => ctx.editedTitle && ctx.editedTitle !== ctx.title)),
-        transition("input",
-            "edit",
+        transition("input", "edit",
             reduce((ctx, ev) => ({...ctx, editedTitle: ev.value})))
     ),
-    loading: invoke(() => wait(2000),
-        transition("done", "success"),
-        transition("error", "edit")
+    loading: invoke(
+        async () => {
+            await wait(2000);
+            return {title: "titre côté serveur"}
+        },
+        transition("done", "success", reduce((ctx, ev) => ({
+            ...ctx, title: ev.data.title
+        }))),
+        transition("error", "error", reduce((ctx, ev) => ({
+            ...ctx, error: ev.error.message
+        })))
     ),
-    success: state()
-}, () => ({
-    title: 'salut'
-}));
+    success: state(
+        transition("dismiss", "idle"),
+        transition("cancel", "edit")
 
-const service = interpret(machine, () => {
-    console.log('Etat de la machine: ', service.machine.current);
-    console.log('Context: ', service.context)
-});
-window.send = service.send;
+    ),
+    error: state(
+        transition("dismiss", "edit"),
+        transition("cancel", "idle")
+    )
+}, () => ({title: "titre à changer"}));
+

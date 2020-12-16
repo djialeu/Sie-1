@@ -8,7 +8,7 @@ const ThemaProg = props => {
 
     return (
         <>
-            <ul style={{marginTop: "100px", textAlign: 'center'}}>
+            <ul style={{marginTop: "100px"}}>
                 {listThema && items}
             </ul>
         </>
