@@ -1,0 +1,12 @@
+.machine {
+    text-align: center;
+    display: flex;
+    margin: auto
+}
+
+.machine1 {
+    justify-content: space-between;
+    width: 50%;
+    display: flex;
+    margin: auto
+}
