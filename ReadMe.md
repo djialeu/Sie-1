@@ -21,4 +21,4 @@ Pour lancer le projet chez vous!!!
 ### Côté FrontEnd React ###
  
  1. Se rendre dans le dossier frontend/gui puis lancer la commande "npm install" ou "yarn" pour installer les dépendances 
- 2. puis taper "npm run dev" ou "yarn dev" pour lancer le projet sur le port 3000
+ 2. Ensuite Taper "npm run dev" ou "yarn dev" pour lancer le projet sur le port 3000
