@@ -1,6 +1,5 @@
 from django.db import models
 
-
 # Create your models here.
 from rest_framework.schemas.generators import endpoint_ordering
 
@@ -16,7 +15,8 @@ class CategorieMesure(models.Model):
 class Mesure(models.Model):
     type = models.CharField(max_length=100)
     descriptif = models.CharField(max_length=500)
-    categorie_mesure = models.ForeignKey(CategorieMesure, on_delete=models.PROTECT, related_name='mesures', default="", editable=True)
+    categorie_mesure = models.ForeignKey(CategorieMesure, on_delete=models.PROTECT, related_name='mesures', default="",
+                                         editable=True)
 
     # Redefinition de l'affichage
     def __str__(self):
@@ -55,7 +55,7 @@ class Projet(models.Model):
     promoteur = models.CharField(max_length=100)
     intitule = models.CharField(max_length=255)
     description = models.CharField(max_length=500)
-    thematique = models.ForeignKey(Thematique, on_delete=models.PROTECT ,editable=True, default="", blank=False)
+    thematique = models.ForeignKey(Thematique, on_delete=models.PROTECT, editable=True, default="", blank=False)
 
     # Redefinition de l'afichage
     def __str__(self):
