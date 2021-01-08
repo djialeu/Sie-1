@@ -2,6 +2,8 @@ from django.db import models
 
 
 # Create your models here.
+from rest_framework.schemas.generators import endpoint_ordering
+
 
 class CategorieMesure(models.Model):
     titre = models.CharField(max_length=100)
