@@ -9,7 +9,7 @@ django.setup()
 fakeagent = Faker()
 
 
-def fixtures(n=2):
+def fixtures(n=0):
     for _ in range(n):
         cmesure = CategorieMesure.objects.get_or_create(titre=fakeagent.cryptocurrency_name())[0]
         programme = Programme.objects.get_or_create(titre='Programme ' + fakeagent.name())[0]
