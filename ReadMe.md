@@ -15,7 +15,7 @@ Pour lancer le projet chez vous!!!
 3. configurer le fichier settings.py dans le dossier minepded qui se trouve dans backend/Minepded/minepded/settings.py
     nommer la bd "sie" et mettez les bons identifiants pour votre bdd postgres
     
-4. Puis rendez-vous dans le dossier backend/Minepded ou se trouve le manage.py et lancer la commande "python manage.py migrate" une fois les migrations terminer, executer generer des fixtures via la commande python fixtures.py , 
+4. Puis rendez-vous dans le dossier backend/Minepded ou se trouve le manage.py et lancer la commande "python manage.py migrate" une fois les migrations terminer, veuillez executer generer des fixtures via la commande python fixtures.py , 
     lancer le serveur django avec "python manage.py runserver"
     
 ### Côté FrontEnd React ###
