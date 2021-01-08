@@ -9,7 +9,6 @@ django.setup()
 import random
 from faker import Faker
 from Sie.models import *
-from faker.providers import *
 
 fakeagent = Faker()
 
